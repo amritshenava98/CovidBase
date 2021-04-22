@@ -1,4 +1,4 @@
-/* import firebase from 'firebase';
+import firebase from 'firebase';
 
 
 const api_key = process.env['API_KEY'];
@@ -11,16 +11,15 @@ const measurement_id = process.env['MEASUREMENT_ID']
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB-nXlLNJNjhSxgW-2ouqKnDnsgKi8pBFk",
-    authDomain: "covidbaseindia.firebaseapp.com",
-    projectId: "covidbaseindia",
-    storageBucket: "covidbaseindia.appspot.com",
-    messagingSenderId: "552531775365",
-    appId: "1:552531775365:web:8de0ee4d786621583bfeec",
-    measurementId: "G-1NMWJPZVD5"
+    apiKey: api_key,
+    authDomain: auth_domain,
+    projectId: project_id,
+    storageBucket: storage_bucket,
+    messagingSenderId: messaging_sender_id,
+    appId: app_id,
+    measurementId: measurement_id
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export default firebaseConfig;
-*/

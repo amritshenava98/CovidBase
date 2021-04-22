@@ -8,8 +8,10 @@ import SearchForm from './components/Form';
 
 function App() {
   return(
-    <div className="App">
-      <h1>CovidBase</h1>
+    <div className="container">
+      <div className="App">
+        <h1>CovidBase</h1>
+      </div>
       <SearchForm />
     </div>
   );
