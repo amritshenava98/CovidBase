@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.leadpathButton {
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
 .form-design
 .App-logo {
   height: 40vmin;

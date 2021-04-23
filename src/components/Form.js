@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 import '../App.css';
+import SubmitForm from '../pages/Submit';
 
 function SearchForm(){
   const [selectedState, setSelectedState] = useState(0);
@@ -67,6 +69,14 @@ function SearchForm(){
           </Form.Control>
         </Form.Group>
       </Form>
+
+      <BrowserRouter>
+        <Link to="/submit">
+          <center>
+            <Button>Have a lead?</Button>
+          </center>
+        </Link>
+      </BrowserRouter>
     </div>
   );
 }
