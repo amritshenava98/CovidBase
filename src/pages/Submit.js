@@ -14,7 +14,7 @@ function SubmitForm(){
   return(
     <div class="submitDesign">
       <center>
-        <p>Please enter the information of the resource/supply you want to list.</p>
+        <p>NOTE: The site is not yet ready and under development. Please enter the information of the resource/supply you want to list.</p>
       </center>
     <Form>
       <Form.Group controlId="cbfsState">
