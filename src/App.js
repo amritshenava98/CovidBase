@@ -17,6 +17,11 @@ function App() {
         <Switch>
           <Route exact path="/">
             <SearchForm />
+            <Link to="/submit">
+              <center>
+                <Button>Have a Lead?</Button>
+              </center>
+            </Link>
           </Route>
           <Route exact path="/submit">
             <SubmitForm />

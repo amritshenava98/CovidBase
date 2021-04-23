@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+//import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import '../App.css';
 import SubmitForm from '../pages/Submit';
@@ -33,7 +33,10 @@ function SearchForm(){
   }
 
   return(
-    <div className="formDesgin">
+    <div className="formDesign">
+      <center>
+        <p>CovidBase listings are not yet available. Please connect with me on Twitter/Instagram where I am sharing resources</p>
+      </center>
       <Form>
         <Form.Group controlId="cbfState">
           <Form.Label>State</Form.Label>
@@ -69,14 +72,6 @@ function SearchForm(){
           </Form.Control>
         </Form.Group>
       </Form>
-
-      <BrowserRouter>
-        <Link to="/submit">
-          <center>
-            <Button>Have a lead?</Button>
-          </center>
-        </Link>
-      </BrowserRouter>
     </div>
   );
 }

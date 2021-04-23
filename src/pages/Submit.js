@@ -12,7 +12,10 @@ function SubmitForm(){
   const options = null;
   
   return(
-
+    <div class="submitDesign">
+      <center>
+        <p>Please enter the information of the resource/supply you want to list.</p>
+      </center>
     <Form>
       <Form.Group controlId="cbfsState">
         <Form.Label>State</Form.Label>
@@ -43,6 +46,7 @@ function SubmitForm(){
         </Form.Control>
       </Form.Group>
     </Form>
+    </div>
   );
 }
 
