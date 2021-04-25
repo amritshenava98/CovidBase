@@ -1,25 +1,23 @@
-import firebase from 'firebase';
-
-
-const api_key = process.env['API_KEY'];
-const auth_domain = process.env['AUTH_DOMAIN'];
-const project_id = process.env['PROJECT_ID'];
-const storage_bucket = process.env['STORAGE_BUCKET'];
-const messaging_sender_id = process.env['MESSAGING_SENDER_ID'];
-const app_id = process.env['APP_ID'];
-const measurement_id = process.env['MEASUREMENT_ID']
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 
 const firebaseConfig = {
-    apiKey: api_key,
-    authDomain: auth_domain,
-    projectId: project_id,
-    storageBucket: storage_bucket,
-    messagingSenderId: messaging_sender_id,
-    appId: app_id,
-    measurementId: measurement_id
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: 
+    process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
-  // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-export default firebaseConfig;
+const fire = firebase.initializeApp(firebaseConfig);
+
+export const db = fire.database();
+
+export default fire;
+
+

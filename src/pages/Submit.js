@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
-import firebaseConfig from '../utils/Firebase';
+import fire, { db } from '../utils/Firebase';
+import 'firebase/database';
 
 function SubmitForm(){
 
-  const[selectedState, setSelectedState] = useState(0);
+  console.log(process.env);
+
+  const[selectedState, setSelectedState] = useState();
   const[selectedCity, setSelectedCity] = useState();
   const[selectedResource, setSelectedResource] = useState();
   const[information, setInformation] = useState();
@@ -25,15 +28,18 @@ function SubmitForm(){
     setInformation(e.target.value);
   }
 
-  const submitInfo = () => {
-    const resRef = firebaseConfig.database.ref('Leads');
-    const resList = {
-      selectedState,
-      selectedCity,
-      selectedResource,
-      information
+  const submitInfo = (e) => {
+    e.preventDefault();
+    var resRef = db.ref('leads');
+    var resList = {
+      state: selectedState,
+      city: selectedCity,
+      resource: selectedResource,
+      info: information
     };
     resRef.push(resList);
+    alert("Successfully submitted!")
+    console.log("success");
   };
 
   const maharashtra = ["", "Mumbai", "Nagpur", "Pune"];
@@ -61,12 +67,13 @@ function SubmitForm(){
   return(
     <div className="submitDesign">
       <center>
+        <h2>Submit</h2>
         <p>NOTE: The site is not yet ready and under development. Please enter the information of the resource/supply you want to list.</p>
       </center>
     <Form>
       <Form.Group controlId="cbfsState">
         <Form.Label>State</Form.Label>
-        <Form.Control as="select" onChange={handleStateChange} value={selectedState}>
+        <Form.Control as="select" onChange={handleStateChange}>
           <option></option>
           <option>Andhra Pradesh</option>
           <option>Delhi</option>
@@ -85,7 +92,7 @@ function SubmitForm(){
       </Form.Group>
       <Form.Group controlId="cbfsResource">
         <Form.Label>Resource</Form.Label>
-        <Form.Control as="select" onChange={handleResourceChange} value={selectedResource}>
+        <Form.Control as="select" onChange={handleResourceChange}>
           <option></option>
           <option>Bed</option>
           <option>Oxygen</option>
@@ -94,7 +101,7 @@ function SubmitForm(){
       </Form.Group>
       <Form.Group controlId="cbfsInfo">
         <Form.Label>Info</Form.Label>
-        <Form.Control as="textarea" rows={6} onChange={handleInfoChange} value={information}/>
+        <Form.Control as="textarea" rows={6} onChange={handleInfoChange}/>
       </Form.Group>
       <center>
         <Button variant="primary" type="submit" onClick={submitInfo}>
