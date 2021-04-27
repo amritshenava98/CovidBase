@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 //import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Form, Button, Table } from 'react-bootstrap';
 import '../App.css';
-import fire, {db} from '../utils/Firebase';
-import SubmitForm from '../pages/Submit';
+import {db} from '../utils/Firebase';
+//import SubmitForm from '../pages/Submit';
 import 'firebase/database';
 
 function SearchForm(){
@@ -11,6 +11,8 @@ function SearchForm(){
   const [selectedCity, setSelectedCity] = useState();
   const [selectedResource, setSelectedResource] = useState();
   const [lists, setList] = useState([]);
+
+  const [search,setSearch] = useState(false);
   
   const handleStateChange = (e) => {
     setSelectedState(e.target.value);
@@ -24,9 +26,15 @@ function SearchForm(){
   const handleResourceChange = (e) => {
     setSelectedResource(e.target.value);
   }
-
+ 
+  /*
   const handleListChange = (e) => {
     setList(e.target.value);
+  }
+  */
+
+  const checkNull = () => {
+    
   }
 
   const searchFunc = (e) => {
@@ -46,6 +54,7 @@ function SearchForm(){
 
       }
     );
+    setSearch(!search);
   }
 
   // It's a PITA because Firebase cannot save arrays, it has to be an object or else it get's converted to one.
@@ -73,6 +82,7 @@ function SearchForm(){
 
   return(
     <div className="formDesign">
+    <div className="form">
       <center>
         <p>CovidBase listings are not yet available. Please connect with me on Twitter/Instagram where I am sharing resources</p>
       </center>
@@ -118,7 +128,8 @@ function SearchForm(){
             SEARCH
         </Button>
       </center>
-      <Table>
+      </div>
+      {search? <Table>
         <thead>
           <tr>
             <th>State</th>
@@ -144,7 +155,7 @@ function SearchForm(){
            )
           }
          </tbody>
-      </Table>
+      </Table>:""}
     </div>
   );
 }

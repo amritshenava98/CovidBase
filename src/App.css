@@ -19,6 +19,14 @@
   }
 }
 
+img {
+  height: 200px;
+}
+
+.form {
+  padding-bottom: 35px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -41,4 +49,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.flex{
+  margin:20px;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.Plasma{
+  margin-bottom:45px;
 }
