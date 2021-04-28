@@ -60,14 +60,18 @@ function SearchForm(){
   // It's a PITA because Firebase cannot save arrays, it has to be an object or else it get's converted to one.
 
   const maharashtra = ["", "Mumbai", "Nagpur", "Pune"];
-  const karnataka = ["", "Bangalore", "Hubali","Mangalore", "Udupi", "Puttur", "Karwar", "Manipal", "Karkala", "Kaup"];
+  const karnataka = ["All Karnataka", "Bangalore", "Hubali","Mangalore", "Udupi", "Puttur", "Karwar", "Manipal", "Karkala", "Kaup"];
   const kerala = ["", "Kochi", "Trivandrum", "Kollam", "Kasaragod", "Kottayam", "Pallakad"];
+  const gujarat = ["All Gujarat", "Ahmedabad", "Rajkot", "Surat", "Vadodara"]
 
   let options = null;
   let type = null;
 
   if(selectedState === "Maharashtra"){
     type = maharashtra;
+  }
+  else if(selectedState === "Gujarat"){
+    type = gujarat;
   }
   else if(selectedState === "Karnataka"){
     type = karnataka;
@@ -84,7 +88,7 @@ function SearchForm(){
     <div className="formDesign">
     <div className="form">
       <center>
-        <p>CovidBase listings are not yet available. Please connect with me on Twitter/Instagram where I am sharing resources</p>
+        <p>CovidBase listings are not yet available. Please connect with me on <a href="https://twitter.com/astro_shenava">Twitter</a>/<a href="https://instagram.com/astroshenava">Instagram</a> where I am sharing resources</p>
       </center>
       <Form>
         <Form.Group controlId="cbfState">
@@ -92,6 +96,7 @@ function SearchForm(){
           <Form.Control as="select" onChange={handleStateChange}>
             <option></option>
             <option>Delhi</option>
+            <option>Gujarat</option>
             <option>Karnataka</option>
             <option>Kerala</option>
             <option>Maharashtra</option>
@@ -116,7 +121,7 @@ function SearchForm(){
           <Form.Label>Resource</Form.Label>
           <Form.Control as="select" onChange={handleResourceChange}>
             <option></option>
-            <option>Beds</option>
+            <option>Bed</option>
             <option>Plasma</option>
             <option>Remdesivir</option>
             <option>Oxygen</option>

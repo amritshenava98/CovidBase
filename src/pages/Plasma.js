@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import '../App.css';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { db } from '../utils/Firebase';
 
@@ -107,20 +108,20 @@ function Plasma(){
       </center>
       <Form>
         <Form.Group controlId="cbfpName" onChange={handleNameChange} value={selectedName}>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Name <span class="red">*</span></Form.Label>
           <Form.Control type="text">
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="cbfpEmail" onChange={handleEmailChange} value={selectedEmail}>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Email Address <span class="red">*</span></Form.Label>
           <Form.Control type="email" />
         </Form.Group>
         <Form.Group controlId="cbfpPhone" onChange={handlePNChange} value={selectedPhone}>
-          <Form.Label>Phone Number</Form.Label>
+          <Form.Label>Phone Number <span class="red">*</span></Form.Label>
           <Form.Control type="text" />
         </Form.Group>
         <Form.Group controlId="cbfpState" onChange={handleStateChange}>
-          <Form.Label>State</Form.Label>
+          <Form.Label>State <span class="red">*</span></Form.Label>
           <Form.Control as="select" >
             <option></option>
             <option>Karnataka</option>
@@ -128,7 +129,7 @@ function Plasma(){
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="cbfpCity" onChange={handleCityChange}>
-          <Form.Label>City</Form.Label>
+          <Form.Label>City <span class="red">*</span></Form.Label>
           <Form.Control as="select" >
             {
               options
@@ -136,11 +137,11 @@ function Plasma(){
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="cbfAge" onChange={handleAgeChange}>
-          <Form.Label>Age</Form.Label>
+          <Form.Label>Age <span class="red">*</span></Form.Label>
           <Form.Control type="number" placeholder="18-45" min="18" max="45"/>
         </Form.Group>
         <Form.Group controlId="cbfpBG" onChange={handleBGChange}>
-          <Form.Label>Blood Group</Form.Label>
+          <Form.Label>Blood Group <span class="red">*</span></Form.Label>
           <Form.Control as="select">
             <option></option>
             <option>A+</option>

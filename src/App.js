@@ -19,6 +19,9 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Link to="/"><img src={covidbase} alt="logo"/></Link>
+          <a href="https://www.instagram.com/covidbase_hq/">
+            <span class="icon-instagram"></span>
+          </a>
         </div>
         <Switch>
           <Route exact path="/">

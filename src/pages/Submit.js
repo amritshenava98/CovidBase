@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { db } from '../utils/Firebase';
 import 'firebase/database';
+import $ from 'jquery';
 
 function SubmitForm(){
 
@@ -47,15 +48,24 @@ function SubmitForm(){
     }
   };
 
+  // const country_details = require('../country_details.json');
+  // $.getJSON("country_details.json", function(json) {
+  //   console.log(json); // this will show the info it in firebug console
+  // });
   const maharashtra = ["", "Mumbai", "Nagpur", "Pune"];
-  const karnataka = ["", "Bangalore", "Hubali","Mangalore", "Udupi", "Puttur", "Karwar", "Manipal", "Karkala", "Kaup"];
-  const kerala = ["", "Kochi", "Trivandrum", "Kollam", "Kasaragod", "Kottayam", "Pallakad", ""];
+  const karnataka = ["All Karnataka", "Bangalore", "Hubali","Mangalore", "Udupi", "Puttur", "Karwar", "Manipal", "Karkala", "Kaup"];
+  const kerala = ["All Kerala", "Kochi", "Trivandrum", "Kollam", "Kasaragod", "Kottayam", "Pallakad", ""];
+  const gujarat = ["All Gujarat", "Ahmedabad", "Rajkot", "Surat", "Vadodara"];
+  const telangana = ["All Telangana", "Hyderabad"];
 
   let options = null;
   let type = null;
 
   if(selectedState === "Maharashtra"){
     type = maharashtra;
+  }
+  else if(selectedState === "Gujarat"){
+    type = gujarat;
   }
   else if(selectedState === "Karnataka"){
     type = karnataka;
@@ -73,22 +83,24 @@ function SubmitForm(){
     <div className="submitDesign">
       <center>
         <h2>Submit</h2>
-        <p>NOTE: The site is not yet ready and under development. Please enter the information of the resource/supply you want to list.</p>
+        <p>NOTE: Not all states and cities ar eavailable yet as we are in the process of adding it. Please enter the information of the resource/supply you want to list.</p>
       </center>
     <Form>
       <Form.Group controlId="cbfsState">
-        <Form.Label>State</Form.Label>
+        <Form.Label>State <span class="red">*</span></Form.Label>
         <Form.Control as="select" onChange={handleStateChange}>
           <option></option>
           <option>Andhra Pradesh</option>
           <option>Delhi</option>
+          <option>Gujarat</option>
           <option>Karnataka</option>
           <option>Kerala</option>
           <option>Maharashtra</option>
+          <option>Telangana</option>
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="cbfsCity">
-        <Form.Label>City</Form.Label>
+        <Form.Label>City <span class="red">*</span></Form.Label>
         <Form.Control as="select" onChange={handleCityChange} value={selectedCity}>
         {
           options
@@ -96,7 +108,7 @@ function SubmitForm(){
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="cbfsResource">
-        <Form.Label>Resource</Form.Label>
+        <Form.Label>Resource <span class="red">*</span></Form.Label>
         <Form.Control as="select" onChange={handleResourceChange}>
           <option></option>
           <option>Bed</option>
@@ -105,7 +117,7 @@ function SubmitForm(){
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="cbfsInfo">
-        <Form.Label>Info</Form.Label>
+        <Form.Label>Info <span class="red">*</span></Form.Label>
         <Form.Control as="textarea" rows={6} onChange={handleInfoChange}/>
       </Form.Group>
       <center>
