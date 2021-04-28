@@ -73,6 +73,9 @@ function SubmitForm(){
   else if(selectedState === "Kerala"){
     type = kerala;
   }
+  else if(selectedState === "Telangana"){
+    type = kerala;
+  }
 
   if(type){
     options = type.map((el) => <option key={el}>{el}</option>);
