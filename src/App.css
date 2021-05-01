@@ -65,3 +65,8 @@ img {
 .Plasma{
   margin-bottom:45px;
 }
+
+.flex-2{
+  display: flex;
+  justify-content: center;
+}

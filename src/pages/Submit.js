@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
+import { Redirect } from 'react-router';
 import { Form, Button } from 'react-bootstrap';
 import { db } from '../utils/Firebase';
 import 'firebase/database';
-import $ from 'jquery';
+import countryDetails from './../country_details.json';
 
 function SubmitForm(){
-
-  console.log(process.env);
 
   const[selectedState, setSelectedState] = useState();
   const[selectedCity, setSelectedCity] = useState();
@@ -41,22 +40,38 @@ function SubmitForm(){
       };
       resRef.push(resList);
       alert("Successfully submitted!")
-      console.log("success");
+      return (<Redirect to="/" push={true}/>);
     }
     else{
       alert("Fields cannot be Empty");
     }
   };
 
-  // const country_details = require('../country_details.json');
-  // $.getJSON("country_details.json", function(json) {
-  //   console.log(json); // this will show the info it in firebug console
-  // });
+  /* let distinct_states = null;
+  let cityOptions  = null;
+  let cities = null;
+
+  let states = countryDetails.map(states => states.admin_name)
+  .filter((value, index, self) => self.indexOf(value) === index)
+
+  distinct_states = states.map((states) => <option key={states} value={states}>{states}</option>);
+  
+  if(selectedState){
+    console.log(selectedState)
+    let cityList = countryDetails.filter(states => states.admin_name === selectedState);
+    let cities = cityList.map(states => states.city)
+    cityOptions = cities.map((cities) => <option key={cities}>{cities}</option>);
+    // type= cityList.city
+    console.log(cities)
+  } */
+  
+
   const maharashtra = ["", "Mumbai", "Nagpur", "Pune"];
   const karnataka = ["All Karnataka", "Bangalore", "Hubali","Mangalore", "Udupi", "Puttur", "Karwar", "Manipal", "Karkala", "Kaup"];
   const kerala = ["All Kerala", "Kochi", "Trivandrum", "Kollam", "Kasaragod", "Kottayam", "Pallakad", ""];
   const gujarat = ["All Gujarat", "Ahmedabad", "Rajkot", "Surat", "Vadodara"];
   const telangana = ["All Telangana", "Hyderabad"];
+  const tamil_nadu = ["All TN", "Chennai", "Coimbatore"];
 
   let options = null;
   let type = null;
@@ -92,6 +107,7 @@ function SubmitForm(){
       <Form.Group controlId="cbfsState">
         <Form.Label>State <span class="red">*</span></Form.Label>
         <Form.Control as="select" onChange={handleStateChange}>
+       {/*} {distinct_states } */}
           <option></option>
           <option>Andhra Pradesh</option>
           <option>Delhi</option>
@@ -99,14 +115,14 @@ function SubmitForm(){
           <option>Karnataka</option>
           <option>Kerala</option>
           <option>Maharashtra</option>
-          <option>Telangana</option>
+          <option>Telangana</option>*/}
         </Form.Control>
       </Form.Group>
       <Form.Group controlId="cbfsCity">
         <Form.Label>City <span class="red">*</span></Form.Label>
         <Form.Control as="select" onChange={handleCityChange} value={selectedCity}>
         {
-          options
+             options
         }
         </Form.Control>
       </Form.Group>
@@ -129,6 +145,7 @@ function SubmitForm(){
         </Button>
       </center>
     </Form>
+    <br></br>
     </div>
   );
 }

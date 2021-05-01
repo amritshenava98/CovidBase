@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchForm from './components/Form';
 import SubmitForm from './pages/Submit';
 import Plasma from './pages/Plasma';
+import AdminView from './pages/adminview';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         <div className="App">
           <Link to="/"><img src={covidbase} alt="logo"/></Link>
           <a href="https://www.instagram.com/covidbase_hq/">
-            <span class="icon-instagram"></span>
+            <span className="icon-instagram"></span>
           </a>
         </div>
         <Switch>
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route exact path="/plasma">
             <Plasma />
+          </Route>
+          <Route exact path="/admin/leads/all">
+            <AdminView />
           </Route>
           { /*<Route exact path="/donate">
             <Donate />
