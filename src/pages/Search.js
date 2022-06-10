@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 //import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Form, Button, Table } from 'react-bootstrap';
+//import { Helmet } from 'react-helmet'
 import '../App.css';
 import {db} from '../utils/Firebase';
 //import SubmitForm from '../pages/Submit';
 import 'firebase/database';
 import countryDetails from './../country_details.json';
 
-
+import Listing from '../components/Listing';
 
 function SearchForm(){
   const [selectedState, setSelectedState] = useState();
@@ -60,24 +61,6 @@ function SearchForm(){
     setSearch(!search);
   }
 
-  // It's a PITA because Firebase cannot save arrays, it has to be an object or else it get's converted to one.
-  // '../country_details.json');
-  // let distinct_states = null;
-  // let states = countryDetails.map(states => states.admin_name)
-  // .filter((value, index, self) => self.indexOf(value) === index)
-
-  // distinct_states = states.map((states) => <option key={states} value={states}>{states}</option>);
-  
-  const maharashtra = ["All Maharashtra", "Kolhapur", "Mumbai", "Nagpur", "Navi Mumbai", "Pune"];
-  const karnataka = ["All Karnataka", "Bangalore", "Hubali", "Karkala", "Karwar", "Kaup", "Manipal", "Mangalore", "Mysore", "Puttur", "Udupi"];
-  const kerala = ["All Kerala", "Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kochi", "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Thiruvanthapuram", "Thrissur"];
-  const gujarat = ["All Gujarat", "Ahmedabad", "Rajkot", "Surat", "Vadodara"]
-  const tamil_nadu = ["All TN", "Chennai", "Coimbatore"];
-  const telangana = ["All Telangana", "Hyderabad"];
-
-  let options = null;
-  let type = null;
-  /*
   let distinct_states = null;
   let cityOptions  = null;
   let cities = null;
@@ -95,7 +78,7 @@ function SearchForm(){
     console.log(cities)
   }
 
-*/
+ /*
   if(selectedState === "Maharashtra"){
      type = maharashtra;
    }
@@ -112,6 +95,7 @@ function SearchForm(){
   if(type){
     options = type.map((el) => <option key={el}>{el}</option>);
   }
+  */
 //  {distinct_states }
   return(
     <div className="formDesign">
@@ -119,27 +103,29 @@ function SearchForm(){
       <center>
         <p>NOTE : Not all listings are available as some leads will be exhausted or becomes dead within minutes. If a resource is not available, then please connect with me on <a href="https://twitter.com/astro_shenava">Twitter</a>/<a href="https://instagram.com/astroshenava">Instagram</a> where I am sharing resources</p>
       </center>
-       
+      <center>
+      <div class="Search">
+      <h2>Search</h2>
       <Form>
-        <Form.Group controlId="cbfState">
+        <Form.Group className="formelem">
           <Form.Label>State</Form.Label>
           <Form.Control as="select" onChange={handleStateChange}>
-         {/*} {distinct_states } */}
-            <option></option>
+         {distinct_states } 
+           { /* <option></option>
             <option>Delhi</option>
             <option>Gujarat</option>
             <option>Karnataka</option>
             <option>Kerala</option>
             <option>Maharashtra</option>
             <option>Tamil Nadu</option>
-            <option>Telangana</option>
+            <option>Telangana</option> */ }
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="cbfCity">
+        <Form.Group className="formelem">
           <Form.Label>City</Form.Label>
           <Form.Control as="select" onChange={handleCityChange}> /*{handleCityChange}> */}
            {
-             options 
+             cityOptions
            }
            { /*<option>Bangalore</option>
             <option>Mangalore</option>
@@ -149,7 +135,7 @@ function SearchForm(){
             <option>Karkala</option> */}
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="cbfResource">
+        <Form.Group className="formelem">
           <Form.Label>Resource</Form.Label>
           <Form.Control as="select" onChange={handleResourceChange}>
             <option></option>
@@ -161,38 +147,24 @@ function SearchForm(){
         </Form.Group>
       </Form>
       <center>
-        <Button variant="primary" type="submit" onClick={searchFunc}>
+        <Form.Group className="formelem">
+          <Button variant="primary" type="submit" onClick={searchFunc} className="formelem">
             SEARCH
-        </Button>
+          </Button>
+        </Form.Group>
       </center>
       </div>
-      {search? <Table>
-        <thead>
-          <tr>
-            <th>State</th>
-            <th>City</th>
-            <th>Resource</th>
-            <th>Info</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
+      </center>
+      </div>
+      {search? 
             lists.map((data, index) => 
             {
               return (data.state === selectedState && 
               data.city === selectedCity && 
               data.resource === selectedResource) ?  
-              <tr key={`data-${index}`}>{/* Keys are important because that's how react differentiates between objects in a list*/}
-                <td>{data.state}</td>
-                <td>{data.city}</td>
-                <td>{data.resource}</td>
-                <td>{data.info}</td>
-              </tr> : null
+             <Listing info={data.info} state={data.state} city={data.city} resource={data.resource} /> : null
             }
-           )
-          }
-         </tbody>
-      </Table>:""}
+           ) :""}
     </div>
   );
 }

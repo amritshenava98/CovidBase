@@ -6,10 +6,11 @@ import './App.css';
 import covidbase from './images/covidbase.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import firebaseConfig from './utils/Firebase.js';
-import SearchForm from './components/Form';
+import SearchForm from './pages/Search';
 import SubmitForm from './pages/Submit';
 import Plasma from './pages/Plasma';
 import AdminView from './pages/adminview';
+import SelectedResource from './pages/selectedResource';
 
 function App() {
 
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/admin/leads/all">
             <AdminView />
+          </Route>
+          <Route exact path="/search">
+            <SelectedResource />
           </Route>
           { /*<Route exact path="/donate">
             <Donate />

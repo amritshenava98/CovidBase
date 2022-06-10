@@ -6,6 +6,42 @@ span.red{
   color:Red;
 }
 
+Form {
+  text-align: left; 
+  align-content: center;
+  align-items: center;
+}
+
+
+Form.Group {
+  padding: 5px;
+}
+
+.Listing {
+  align-content: center;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  border: solid black 1px;
+}
+
+@media only screen 
+and (min-width : 1224px)  {
+  .Search, .Submit {
+    width: 600px;
+    padding: 25px;
+    margin: 5px;
+    border: solid black 1px;
+  }
+  .Listing {
+    width: 800px;
+    padding: 30px;
+    margin: 25px;
+    border: solid black 1px;
+    background-color: lightblue;
+  }
+}
+
 .leadpathButton {
   align-self: center;
   align-content: center;
@@ -27,8 +63,8 @@ img {
   height: 200px;
 }
 
-.form {
-  padding-bottom: 35px;
+.formelem {
+  padding: 10px;
 }
 
 .App-header {
